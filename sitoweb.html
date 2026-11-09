@@ -1,0 +1,502 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio fotografico professionale">
+    <title>Davide Gualtieri Photography</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f7f6f2;
+            color: #222;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        /* NAVBAR */
+        header {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 30px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            color: white;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 27px;
+            letter-spacing: 4px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: opacity .3s;
+        }
+
+        nav a:hover {
+            opacity: .6;
+        }
+
+        /* HERO */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            background:
+                linear-gradient(rgba(0,0,0,.30), rgba(0,0,0,.35)),
+                url('C:/Users/davig/OneDrive/Pictures/Portfolio/IMG_4430edited.jpg?auto=format&fit=crop&w=2000&q=85')
+                center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            padding: 20px;
+            animation: appear 1.2s ease;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(48px, 8vw, 100px);
+            font-weight: 400;
+            letter-spacing: 3px;
+        }
+
+        .hero p {
+            font-size: 13px;
+            letter-spacing: 5px;
+            margin-top: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero-button {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 35px;
+            border: 1px solid white;
+            color: white;
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 3px;
+            transition: .3s;
+        }
+
+        .hero-button:hover {
+            background: white;
+            color: #222;
+        }
+
+        /* SEZIONI */
+        section {
+            padding: 110px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title span {
+            font-size: 11px;
+            letter-spacing: 4px;
+            color: #999;
+            text-transform: uppercase;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 44px;
+            font-weight: 400;
+            margin-top: 12px;
+        }
+
+        /* GALLERIA */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .photo {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+            background: #ddd;
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .6s;
+        }
+
+        .photo:hover img {
+            transform: scale(1.07);
+        }
+
+        .photo-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 20px;
+            color: white;
+            background: linear-gradient(transparent, rgba(0,0,0,.65));
+            font-family: 'Playfair Display', serif;
+            font-size: 23px;
+        }
+
+        /* ABOUT */
+        .about {
+            background: #eeece6;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+        }
+
+        .about-text span {
+            color: #999;
+            font-size: 11px;
+            letter-spacing: 3px;
+        }
+
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 400;
+            margin: 20px 0;
+        }
+
+        .about-text p {
+            line-height: 2;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        /* SERVIZI */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+            text-align: center;
+        }
+
+        .service {
+            padding: 35px 20px;
+            border: 1px solid #e4e1d9;
+        }
+
+        .service h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 25px;
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+
+        .service p {
+            color: #888;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* CONTATTI */
+        .contact {
+            background: #242421;
+            color: white;
+            text-align: center;
+        }
+
+        .contact .section-title span {
+            color: #aaa;
+        }
+
+        .contact p {
+            color: #bbb;
+            margin-bottom: 30px;
+        }
+
+        .contact a {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            border: 1px solid #aaa;
+            padding: 15px 90px;
+            letter-spacing: 2px;
+            font-size: 12px;
+            transition: .3s;
+        }
+
+        .contact a:hover {
+            background: white;
+            color: #222;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 30px;
+            background: #1b1b19;
+            color: #888;
+            text-align: center;
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+
+        /* ANIMAZIONE */
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header {
+                padding: 22px 5%;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav a {
+                margin: 0 7px;
+                font-size: 10px;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .about img {
+                height: 400px;
+            }
+
+            .services {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 75px 6%;
+            }
+
+            .section-title h2 {
+                font-size: 35px;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                margin: 0 5px;
+                font-size: 9px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MENU -->
+    <header>
+        <div class="logo">davig_ph</div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#about">Chi sono</a>
+            <a href="#contact">Contatti</a>
+        </nav>
+    </header>
+
+    <!-- COPERTINA -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>In ogni scatto<br>emozione e dedizione</h1>
+            <p>Aviazione · Automotive · Passione</p>
+            <a href="#portfolio" class="hero-button">
+                SCOPRI IL PORTFOLIO
+            </a>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio">
+        <div class="section-title">
+            <span>Una selezione dei miei lavori recenti</span>
+            <h2>Portfolio</h2>
+        </div>
+
+        <div class="gallery">
+
+            <div class="photo">
+                <img src="C:\Users\davig\OneDrive\Pictures\Portfolio\IMG_4247.jpg?w=800" alt="Ferrari F50">
+                <div class="photo-label">Ferrari F50</div>
+            </div>
+
+            <div class="photo">
+                <img src="C:\Users\davig\OneDrive\Pictures\Portfolio\IMG_4078.jpg?w=800" alt="Ferrari SF90xx Spider">
+                <div class="photo-label">Ferrari SF90xx Spider</div>
+            </div>
+
+            <div class="photo">
+                <img src="C:\Users\davig\OneDrive\Pictures\Portfolio\IMG_4059.jpg?w=800" alt="Ferrari 296 Speciale">
+                <div class="photo-label">Ferrari 296 Speciale</div>
+            </div>
+
+            <div class="photo">
+                <img src="C:\Users\davig\OneDrive\Pictures\Portfolio\IMG_3896.jpg?w=800" alt="AW139 Carabinieri">
+                <div class="photo-label">AW139 Carabinieri</div>
+            </div>
+
+            <div class="photo">
+                <img src="C:\Users\davig\OneDrive\Pictures\Portfolio\IMG_3554.jpg?w=800" alt="Eurofighter Kuwait Air Force">
+                <div class="photo-label">Eurofighter Kuwait Air Force</div>
+            </div>
+
+            <div class="photo">
+                <img src="C:\Users\davig\OneDrive\Pictures\Portfolio\IMG_2877.jpg?w=800" alt="Airbus Racer">
+                <div class="photo-label">Airbus Racer</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CHI SONO -->
+    <section class="about" id="about">
+
+        <img
+            src="C:\Users\davig\OneDrive\Pictures\Portfolio\IMG_3291.jpg?w=1000"
+            alt="UH90 Esercito Italiano">
+
+        <div class="about-text">
+            <span>LA MIA STORIA</span>
+            <h2>Racconto le mie passioni</h2>
+
+            <p>
+                Da quando ero piccolo, qualsiasi mezzo dotato di 
+				motore mi affascina. Mi bastava avere tra le mani 
+				un modellino per incuriosirmi ed entusiasmarmi.
+            </p>
+			
+			<p>
+				L'interesse nel cercare di capire come questi
+				capolavori d'ingegneria e tecnica funzionassero mi
+				ha spinto a volerli illustrare tramite disegni 
+				iperrealistici e,
+				oggi, tentare di immortalarli con una fotocamera,
+				cogliendone ogni dettaglio e "giocando" 
+				con la luce e la post produzione, in modo da rendere
+				ogni scatto personale e ricco di quella passione
+				che mi pervade.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- SERVIZI -->
+    <section>
+        <div class="section-title">
+            <span>Quello che faccio</span>
+            <h2>I miei servizi</h2>
+        </div>
+
+        <div class="services">
+
+            <div class="service">
+                <h3>Shootings</h3>
+                <p>
+                    Raccolgo una serie di foto dedicate ad un'unica vettura:
+					dettagli, panoramiche e in movimento.
+                </p>
+            </div>
+
+            <div class="service">
+                <h3>Eventi</h3>
+                <p>
+                    Immortalo eventi automobilistici ed aeronautici
+                    attraverso scatti spontanei.
+                </p>
+            </div>
+
+            <div class="service">
+                <h3>Reportage fotografici</h3>
+                <p>
+                    Racconto i velivoli e le persone che ne permettono l'operatività
+					attraverso lo sguardo di un appassionato.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTATTI -->
+    <section class="contact" id="contact">
+
+        <div class="section-title">
+            <span>Dreaming the next shot.</span>
+            <h2>Contattami</h2>
+        </div>
+
+        <p>Per collaborazioni, servizi fotografici e informazioni.</p>
+
+        <a href="mailto:davi.gualti04@gmail.com">
+            Mail
+        </a>
+		<a href="mailto:davide.gualtieri@arubapec.it">
+            PEC
+        </a>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 DAVIDE GUALTIERI PHOTOGRAPHY — ALL RIGHTS RESERVED
+    </footer>
+
+</body>
+</html>
